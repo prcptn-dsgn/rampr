@@ -1,0 +1,221 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+#preview {
+    width: 33.33vw;
+    height: 11vw;
+    border-radius: 1vw;
+    background: rgb(192,83,255);
+    background: linear-gradient(90deg, #00ffaa 0%, #c053ff 100%);
+    box-shadow: 0 .5vw 3vw rgba(0,0,0,.15);
+    margin-left: 33.33vw;
+    animation: fadeIn 1.5s forwards;
+    opacity: 0;
+    transition: .5s;
+}
+
+#colors {
+    width: 33.99vw;
+    margin-left: 33.33vw;
+    margin-top: .5vw;
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+
+.color {
+    display: inline-block;
+    background: white;
+    height: 2.5vw;
+    width: 5.9vw;
+    margin-right: .66vw;
+    margin-top: .33vw;
+    border-radius: .5vw;
+    transition: .5s;
+    cursor: pointer;
+    position: relative;
+    bottom: 0;
+}
+
+.color:hover {
+    bottom: .33vw;
+}
+
+.color.nodelete::before {
+    content: '';
+    width: 1vw;
+    height: 1vw;
+    background: #eee;
+    position: absolute;
+    bottom: -1.5vw;
+    left: 40%;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: .5s;
+}
+
+.color.nodelete::after {
+    content: 'click to edit';
+    background: #eee;
+    color: #bbb;
+    font-size: .9vw;
+    padding: .3vw .31vw;
+    border-radius: .3vw;
+    position: absolute;
+    bottom: -2.5vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    z-index: 1100;
+}
+
+.color.nodelete:hover::after {
+    opacity: 1;
+    bottom: -2vw;
+}
+
+.color.nodelete:hover::before {
+    opacity: 1;
+    bottom: -1vw;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.color .delColor {
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    position: relative;
+    top: .23vw;
+    left: 3.9vw;
+    cursor: pointer;
+    --col: white;
+    opacity: .8;
+    transition: .5s;
+    z-index: 1000;
+}
+
+.color .delColor:hover {
+    opacity: 1;
+    top: 0vw;
+}
+
+.color.nodelete .delColor {
+    display: none;
+}
+
+.color .delColor::before {
+    content: '';
+    display: inline-block;
+    width: 1.2vw;
+    height: .22vw;
+    background: var(--col);
+    position: absolute;
+    top: .9vw;
+    left: .25vw;
+    transform: rotate(45deg);
+}
+
+.color .delColor::after {
+    content: '';
+    display: inline-block;
+    width: 1.2vw;
+    height: .22vw;
+    background: var(--col);
+    position: absolute;
+    top: .9vw;
+    left: .25vw;
+    transform: rotate(-45deg);
+}
+
+#colSet {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#addColor {
+    cursor: pointer;
+    --col: white;
+    opacity: .7;
+    position: absolute;
+    top: 3vw;
+    left: 35vw;
+    transition: .5s;
+}
+
+#addColor:hover {
+    opacity: .9;
+    top: 2.66vw;
+}
+
+#addColor::before {
+    content: '';
+    display: inline-block;
+    width: 1.5vw;
+    height: .25vw;
+    background: var(--col);
+    position: relative;
+    bottom: 1.2vw;
+}
+
+#addColor::after {
+    content: '';
+    display: inline-block;
+    width: 1.5vw;
+    height: .25vw;
+    background: var(--col);
+    position: relative;
+    bottom: 1.2vw;
+    left: -1.5vw;
+    transform: rotate(90deg);
+}
+
+.cont {
+    height: 95vh;
+    position: relative;
+}
+
+.main {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.toolbar {
+    position: absolute;
+    right: 1.7vw;
+    top: 7.8vw;
+}
+
+.toolbar2 {
+    position: absolute;
+    right: 1.7vw;
+    top: 2vw;
+}
+
+.fas {
+    font-size: 1.5vw;
+    color: white;
+    opacity: .7;
+    position: relative;
+    right: .6vw;
+    margin-left: 1vw;
+    bottom: 0;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.fas:hover {
+    opacity: 1;
+    bottom: .33vw;
+}

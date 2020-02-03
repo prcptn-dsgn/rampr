@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rampr</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0f3dff2fc5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cont">
+    <div class="main">
+
+        <div id="preview">
+            <span id="addColor" onclick="addColor();"></span>
+            <div class="toolbar">
+                <i class="fas fa-clipboard" onclick="clipboard();"></i>
+                <i class="fas fa-code" onclick="css();"></i>
+                <i class="fas fa-undo-alt" onclick="undo();"></i>
+            </div>
+            <div class="toolbar2">
+                <i class="fas fa-arrow-alt-circle-up" id="rot" onclick="rotate(this,1);"
+                   style="transition:transform .2s, bottom .5s!important;transform:rotate(90deg)"></i>
+            </div>
+        </div>
+
+        <div id="colors">
+      <span class="color nodelete" data-color="#00ffaa" onclick="setColor(this);">
+        <span class="delColor"></span>
+      </span>
+        </div>
+
+    </div>
+</div>
+<input type="color" id="colSet" tabindex=-1>
+<script src="scripts.js"></script>
+</body>
+</html>
