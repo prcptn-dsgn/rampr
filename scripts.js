@@ -141,7 +141,7 @@ function css() {
 }
 
 function clipboard() {
-    prompt("Permalink", "https://rampr.prcptn.us#" + getHash());
+    prompt("Permalink", "https://rampr.prcptn.us/#" + getHash());
 }
 
 window.onload = function() {
