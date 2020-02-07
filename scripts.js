@@ -180,8 +180,9 @@ function toCanvas(w,h,a,cols) {
     ctx.canvas.height = h;
     var g = getCoords(w,h,a);
     var grd = ctx.createLinearGradient(g[0][0],g[0][1],g[1][0],g[1][1]);
+    var p = 1.0 / (cols.length-1)
     for (var i = 0; i < cols.length; i++) {
-        grd.addColorStop(i,cols[i])
+        grd.addColorStop(i*p,cols[i])
     }
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, w, h);
