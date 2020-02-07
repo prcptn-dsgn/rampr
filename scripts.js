@@ -180,7 +180,7 @@ function toCanvas(w,h,a,cols) {
     ctx.canvas.height = h;
     var g = getCoords(w,h,a);
     var grd = ctx.createLinearGradient(g[0][0],g[0][1],g[1][0],g[1][1]);
-    var p = 1.0 / (cols.length-1)
+    var p = cols.length > 1 ? 1.0 / (cols.length-1) : 1;
     for (var i = 0; i < cols.length; i++) {
         grd.addColorStop(i*p,cols[i])
     }
@@ -205,5 +205,5 @@ function dlImage() {
     document.querySelectorAll('.color').forEach(e => {
         s.push(e.getAttribute('data-color'));
     });
-    toImage(3840,2160,angle*45,s);
+    toImage(2560,1440,angle*45,s);
 }
