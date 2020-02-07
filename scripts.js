@@ -159,3 +159,50 @@ window.onload = function() {
         updateGradient();
     });
 }
+
+function getCoords(w,h,p) {
+    // Get gradient start/end coords from width, height, and phi
+    // Format: [[x1,y1],[x2,y2]]
+    var pr = p * Math.PI / 180;
+    var H = Math.sqrt(Math.pow(w,2)+Math.pow(h,2))/2;
+    // ^ change based on angle eventually. fix cropping issues
+    var o = Math.round(Math.sin(pr)*H);
+    var a = Math.round(Math.cos(pr)*H);
+    var p1 = [w/2+o,h/2-a]; // swap +o/-o based on direction?
+    var p2 = [w/2-o,h/2+a];
+    return [p2,p1];
+}
+
+function toCanvas(w,h,a,cols) {
+    var c = document.querySelector("#export");
+    var ctx = c.getContext("2d");
+    ctx.canvas.width = w;
+    ctx.canvas.height = h;
+    var g = getCoords(w,h,a);
+    var grd = ctx.createLinearGradient(g[0][0],g[0][1],g[1][0],g[1][1]);
+    for (var i = 0; i < cols.length; i++) {
+        grd.addColorStop(i,cols[i])
+    }
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, w, h);
+}
+
+function toImage(w,h,a,c) {
+    toCanvas(w,h,a,c);
+    var s = document.querySelector('#export').toDataURL("image/png")
+    var link = document.createElement("a");
+    link.download = 'gradient.png';
+    link.href = s;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+}
+
+function dlImage() {
+    var s = [];
+    document.querySelectorAll('.color').forEach(e => {
+        s.push(e.getAttribute('data-color'));
+    });
+    toImage(3840,2160,angle*45,s);
+}

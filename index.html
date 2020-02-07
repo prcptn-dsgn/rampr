@@ -14,6 +14,7 @@
         <div id="preview">
             <span id="addColor" onclick="addColor();"></span>
             <div class="toolbar">
+                <i class="fas fa-download" onclick="dlImage();"></i>
                 <i class="fas fa-clipboard" onclick="clipboard();"></i>
                 <i class="fas fa-code" onclick="css();"></i>
                 <i class="fas fa-undo-alt" onclick="undo();"></i>
@@ -33,6 +34,7 @@
     </div>
 </div>
 <input type="color" id="colSet" tabindex=-1>
+<canvas id="export" width="100" height="100"></canvas>
 <script src="scripts.js"></script>
 </body>
 </html>
